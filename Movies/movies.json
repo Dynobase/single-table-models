@@ -1,0 +1,469 @@
+{
+  "ModelName": "Movies",
+  "ModelMetadata": {
+    "Author": "Dynobase",
+    "DateCreated": "2022-01-06T10:57:34.419Z",
+    "DateLastModified": "2022-01-06T10:57:34.419Z",
+    "Description": "Simple model with Movies, Charactes, Directors",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "data",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "type",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "__id",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "year",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "budget",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "boxOffice",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "category",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "role",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "playedBy",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "nationality",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "gsi1pk",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "gsi1sk",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "alias",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "gsi1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "gsi1pk",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "gsi1sk",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "type": {
+            "S": "movie"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard"
+          },
+          "sk": {
+            "S": "MOVIE#DieHard"
+          },
+          "__id": {},
+          "year": {
+            "N": "1988"
+          },
+          "budget": {
+            "S": "25-35MM"
+          },
+          "boxOffice": {
+            "S": "140MM"
+          },
+          "category": {
+            "S": "Action"
+          }
+        },
+        {
+          "type": {
+            "S": "character"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard"
+          },
+          "sk": {
+            "S": "CHARACTER#JohnMcClane"
+          },
+          "__id": {},
+          "role": {
+            "S": "protagonist"
+          },
+          "playedBy": {
+            "S": "Bruce Willis"
+          },
+          "name": {
+            "S": "John McClane"
+          },
+          "nationality": {
+            "S": "Irish-American"
+          },
+          "gsi1pk": {
+            "S": "CHARACTOR#JohnMcClane"
+          },
+          "gsi1sk": {
+            "S": "MOVIE#DieHard"
+          }
+        },
+        {
+          "type": {
+            "S": "director"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard"
+          },
+          "sk": {
+            "S": "DIRECTOR#JohnMcTiernan"
+          },
+          "__id": {},
+          "name": {
+            "S": "John McTiernan"
+          },
+          "gsi1pk": {
+            "S": "DIRECTOR#JohnMcTiernan"
+          },
+          "gsi1sk": {
+            "S": "MOVIE#DieHard"
+          }
+        },
+        {
+          "type": {
+            "S": "character"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard"
+          },
+          "sk": {
+            "S": "CHARACTER#HansGruber"
+          },
+          "role": {
+            "S": "antagonist"
+          },
+          "playedBy": {
+            "S": "Alan Rickman"
+          },
+          "name": {
+            "S": "Hans Gruber"
+          },
+          "alias": {
+            "S": "Bill Clay"
+          },
+          "nationality": {
+            "S": "German"
+          }
+        },
+        {
+          "type": {
+            "S": "movie"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard2"
+          },
+          "sk": {
+            "S": "MOVIE#DieHard2"
+          },
+          "year": {
+            "N": "1990"
+          },
+          "budget": {
+            "S": "62–70MM"
+          },
+          "boxOffice": {
+            "S": "240MM"
+          },
+          "category": {
+            "S": "Action"
+          }
+        },
+        {
+          "type": {
+            "S": "character"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard2"
+          },
+          "sk": {
+            "S": "CHARACTER#JohnMcClane"
+          },
+          "__id": {},
+          "role": {
+            "S": "protagonist"
+          },
+          "playedBy": {
+            "S": "Bruce Willis"
+          },
+          "nationality": {
+            "S": "Irish-American"
+          },
+          "name": {
+            "S": "John McClane"
+          },
+          "gsi1pk": {
+            "S": "ACTOR#JohnMcClane"
+          },
+          "gsi1sk": {
+            "S": "MOVIE#DieHard2"
+          }
+        },
+        {
+          "type": {
+            "S": "director"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard2"
+          },
+          "sk": {
+            "S": "DIRECTOR#RennyHarlin"
+          },
+          "name": {
+            "S": "Renny Harlin"
+          },
+          "gsi1pk": {
+            "S": "DIRECTOR#RennyHarlin"
+          },
+          "gsi1sk": {
+            "S": "MOVIE#DieHard2"
+          }
+        },
+        {
+          "type": {
+            "S": "character"
+          },
+          "pk": {
+            "S": "MOVIE#DieHard2"
+          },
+          "sk": {
+            "S": "~new~"
+          },
+          "role": {
+            "S": "tritagonist"
+          },
+          "playedBy": {
+            "S": "Bonnie Bedelia"
+          },
+          "name": {
+            "S": "Holly McClane"
+          },
+          "nationality": {}
+        }
+      ],
+      "ModelSchema": {
+        "indexes": {
+          "primary": {
+            "hash": "pk",
+            "sort": "sk"
+          },
+          "gsi1": {
+            "hash": "gsi1pk",
+            "sort": "gsi1sk",
+            "projection": "ALL"
+          }
+        },
+        "models": {
+          "movie": {
+            "type": {
+              "type": "string",
+              "value": "movie"
+            },
+            "pk": {
+              "type": "string"
+            },
+            "sk": {
+              "type": "string"
+            },
+            "year": {
+              "type": "number"
+            },
+            "budget": {
+              "type": "string"
+            },
+            "boxOffice": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            }
+          },
+          "character": {
+            "type": {
+              "type": "string",
+              "value": "character"
+            },
+            "pk": {
+              "type": "string"
+            },
+            "sk": {},
+            "role": {
+              "type": "string"
+            },
+            "playedBy": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "nationality": {
+              "type": "string"
+            }
+          },
+          "director": {
+            "type": {
+              "type": "string",
+              "value": "director"
+            },
+            "pk": {
+              "type": "string"
+            },
+            "sk": {},
+            "name": {
+              "type": "string"
+            },
+            "gsi1pk": {
+              "type": "string",
+              "value": "${sk}"
+            },
+            "gsi1sk": {
+              "type": "string",
+              "value": "${pk}"
+            }
+          }
+        },
+        "version": "0.1.0",
+        "params": {
+          "typeField": "type"
+        },
+        "format": "onetable:1.0.0"
+      }
+    }
+  ],
+  "ModelSchema": {
+    "indexes": {
+      "primary": {
+        "hash": "pk",
+        "sort": "sk"
+      },
+      "gsi1": {
+        "hash": "gsi1pk",
+        "sort": "gsi1sk",
+        "projection": "ALL"
+      }
+    },
+    "models": {
+      "movie": {
+        "type": {
+          "type": "string",
+          "value": "movie"
+        },
+        "pk": {
+          "type": "string"
+        },
+        "sk": {
+          "type": "string"
+        },
+        "year": {
+          "type": "number"
+        },
+        "budget": {
+          "type": "string"
+        },
+        "boxOffice": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        }
+      },
+      "character": {
+        "type": {
+          "type": "string",
+          "value": "character"
+        },
+        "pk": {
+          "type": "string"
+        },
+        "sk": {},
+        "role": {
+          "type": "string"
+        },
+        "playedBy": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nationality": {
+          "type": "string"
+        }
+      },
+      "director": {
+        "type": {
+          "type": "string",
+          "value": "director"
+        },
+        "pk": {
+          "type": "string"
+        },
+        "sk": {},
+        "name": {
+          "type": "string"
+        },
+        "gsi1pk": {
+          "type": "string",
+          "value": "${sk}"
+        },
+        "gsi1sk": {
+          "type": "string",
+          "value": "${pk}"
+        }
+      }
+    },
+    "version": "0.1.0",
+    "params": {
+      "typeField": "type"
+    },
+    "format": "onetable:1.0.0"
+  }
+}
