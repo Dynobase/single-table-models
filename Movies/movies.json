@@ -2,9 +2,9 @@
   "ModelName": "Movies",
   "ModelMetadata": {
     "Author": "Dynobase",
-    "DateCreated": "2022-01-06T10:57:34.419Z",
-    "DateLastModified": "2022-01-06T10:57:34.419Z",
-    "Description": "Simple model with Movies, Charactes, Directors",
+    "DateCreated": "to-be-changed",
+    "DateLastModified": "2022-01-08T09:41:20.965Z",
+    "Description": "",
     "AWSService": "Amazon DynamoDB",
     "Version": "2.0"
   },
@@ -193,7 +193,8 @@
           },
           "nationality": {
             "S": "German"
-          }
+          },
+          "__id": {}
         },
         {
           "type": {
@@ -216,7 +217,8 @@
           },
           "category": {
             "S": "Action"
-          }
+          },
+          "__id": {}
         },
         {
           "type": {
@@ -266,28 +268,8 @@
           },
           "gsi1sk": {
             "S": "MOVIE#DieHard2"
-          }
-        },
-        {
-          "type": {
-            "S": "character"
           },
-          "pk": {
-            "S": "MOVIE#DieHard2"
-          },
-          "sk": {
-            "S": "~new~"
-          },
-          "role": {
-            "S": "tritagonist"
-          },
-          "playedBy": {
-            "S": "Bonnie Bedelia"
-          },
-          "name": {
-            "S": "Holly McClane"
-          },
-          "nationality": {}
+          "__id": {}
         }
       ],
       "ModelSchema": {
@@ -325,7 +307,8 @@
             },
             "category": {
               "type": "string"
-            }
+            },
+            "__id": {}
           },
           "character": {
             "type": {
@@ -335,17 +318,26 @@
             "pk": {
               "type": "string"
             },
-            "sk": {},
+            "sk": {
+              "type": "string"
+            },
+            "__id": {},
             "role": {
               "type": "string"
             },
             "playedBy": {
               "type": "string"
             },
+            "nationality": {
+              "type": "string"
+            },
             "name": {
               "type": "string"
             },
-            "nationality": {
+            "gsi1pk": {
+              "type": "string"
+            },
+            "gsi1sk": {
               "type": "string"
             }
           },
@@ -357,7 +349,9 @@
             "pk": {
               "type": "string"
             },
-            "sk": {},
+            "sk": {
+              "type": "string"
+            },
             "name": {
               "type": "string"
             },
@@ -368,14 +362,47 @@
             "gsi1sk": {
               "type": "string",
               "value": "${pk}"
-            }
+            },
+            "__id": {}
           }
         },
         "version": "0.1.0",
         "params": {
           "typeField": "type"
         },
-        "format": "onetable:1.0.0"
+        "format": "onetable:1.0.0",
+        "queries": {
+          "Die Hard Characters": {
+            "hash": "MOVIE#DieHard",
+            "sort": "CHARACTER#",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "Movies by John McTiernan": {
+            "hash": "DIRECTOR#JohnMcTiernan",
+            "sort": "MOVIE#",
+            "limit": "100",
+            "index": "gsi1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "Get Die Hard 2 Director": {
+            "hash": "MOVIE#DieHard2",
+            "sort": "DIRECTOR#",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          }
+        }
       }
     }
   ],
@@ -414,7 +441,8 @@
         },
         "category": {
           "type": "string"
-        }
+        },
+        "__id": {}
       },
       "character": {
         "type": {
@@ -424,17 +452,26 @@
         "pk": {
           "type": "string"
         },
-        "sk": {},
+        "sk": {
+          "type": "string"
+        },
+        "__id": {},
         "role": {
           "type": "string"
         },
         "playedBy": {
           "type": "string"
         },
+        "nationality": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
-        "nationality": {
+        "gsi1pk": {
+          "type": "string"
+        },
+        "gsi1sk": {
           "type": "string"
         }
       },
@@ -446,7 +483,9 @@
         "pk": {
           "type": "string"
         },
-        "sk": {},
+        "sk": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -457,13 +496,46 @@
         "gsi1sk": {
           "type": "string",
           "value": "${pk}"
-        }
+        },
+        "__id": {}
       }
     },
     "version": "0.1.0",
     "params": {
       "typeField": "type"
     },
-    "format": "onetable:1.0.0"
+    "format": "onetable:1.0.0",
+    "queries": {
+      "Die Hard Characters": {
+        "hash": "MOVIE#DieHard",
+        "sort": "CHARACTER#",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Movies by John McTiernan": {
+        "hash": "DIRECTOR#JohnMcTiernan",
+        "sort": "MOVIE#",
+        "limit": "100",
+        "index": "gsi1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Get Die Hard 2 Director": {
+        "hash": "MOVIE#DieHard2",
+        "sort": "DIRECTOR#",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      }
+    }
   }
 }
