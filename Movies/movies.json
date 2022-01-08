@@ -3,7 +3,7 @@
   "ModelMetadata": {
     "Author": "Dynobase",
     "DateCreated": "to-be-changed",
-    "DateLastModified": "2022-01-08T09:41:20.965Z",
+    "DateLastModified": "2022-01-08T11:21:37.563Z",
     "Description": "",
     "AWSService": "Amazon DynamoDB",
     "Version": "2.0"
@@ -44,6 +44,14 @@
         },
         {
           "AttributeName": "category",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "gsi2pk",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "gsi2sk",
           "AttributeType": "S"
         },
         {
@@ -91,6 +99,22 @@
           "Projection": {
             "ProjectionType": "ALL"
           }
+        },
+        {
+          "IndexName": "gsi2",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "gsi2pk",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "gsi2sk",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
         }
       ],
       "TableData": [
@@ -116,6 +140,12 @@
           },
           "category": {
             "S": "Action"
+          },
+          "gsi2pk": {
+            "S": "Action"
+          },
+          "gsi2sk": {
+            "S": "1988"
           }
         },
         {
@@ -142,7 +172,7 @@
             "S": "Irish-American"
           },
           "gsi1pk": {
-            "S": "CHARACTOR#JohnMcClane"
+            "S": "CHARACTER#JohnMcClane"
           },
           "gsi1sk": {
             "S": "MOVIE#DieHard"
@@ -218,7 +248,13 @@
           "category": {
             "S": "Action"
           },
-          "__id": {}
+          "__id": {},
+          "gsi2pk": {
+            "S": "Action"
+          },
+          "gsi2sk": {
+            "S": "1990"
+          }
         },
         {
           "type": {
@@ -244,7 +280,7 @@
             "S": "John McClane"
           },
           "gsi1pk": {
-            "S": "ACTOR#JohnMcClane"
+            "S": "CHARACTER#JohnMcClane"
           },
           "gsi1sk": {
             "S": "MOVIE#DieHard2"
@@ -282,6 +318,11 @@
             "hash": "gsi1pk",
             "sort": "gsi1sk",
             "projection": "ALL"
+          },
+          "gsi2": {
+            "hash": "gsi2pk",
+            "sort": "gsi2sk",
+            "projection": "ALL"
           }
         },
         "models": {
@@ -308,7 +349,15 @@
             "category": {
               "type": "string"
             },
-            "__id": {}
+            "__id": {},
+            "gsi2pk": {
+              "type": "string",
+              "value": "${category}"
+            },
+            "gsi2sk": {
+              "type": "string",
+              "value": "${year}"
+            }
           },
           "character": {
             "type": {
@@ -401,6 +450,54 @@
             "type": "Query",
             "operation": "Begins with",
             "filters": []
+          },
+          "Action Movies before 1989": {
+            "hash": "Action",
+            "sort": "1989",
+            "limit": "100",
+            "index": "gsi2",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Less than",
+            "filters": []
+          },
+          "Movies where John McClane was a protagonist": {
+            "hash": "CHARACTER#JohnMcClane",
+            "sort": "MOVIE#",
+            "limit": "100",
+            "index": "gsi1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "role",
+                "value": "protagonist",
+                "type": "string"
+              }
+            ]
+          },
+          "Details about Die Hard": {
+            "hash": "MOVIE#DieHard",
+            "sort": "MOVIE#DieHard",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "All Action Movies": {
+            "hash": "Action",
+            "sort": "",
+            "limit": "100",
+            "index": "gsi2",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
           }
         }
       }
@@ -415,6 +512,11 @@
       "gsi1": {
         "hash": "gsi1pk",
         "sort": "gsi1sk",
+        "projection": "ALL"
+      },
+      "gsi2": {
+        "hash": "gsi2pk",
+        "sort": "gsi2sk",
         "projection": "ALL"
       }
     },
@@ -442,7 +544,15 @@
         "category": {
           "type": "string"
         },
-        "__id": {}
+        "__id": {},
+        "gsi2pk": {
+          "type": "string",
+          "value": "${category}"
+        },
+        "gsi2sk": {
+          "type": "string",
+          "value": "${year}"
+        }
       },
       "character": {
         "type": {
@@ -531,6 +641,54 @@
         "sort": "DIRECTOR#",
         "limit": "100",
         "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Action Movies before 1989": {
+        "hash": "Action",
+        "sort": "1989",
+        "limit": "100",
+        "index": "gsi2",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Less than",
+        "filters": []
+      },
+      "Movies where John McClane was a protagonist": {
+        "hash": "CHARACTER#JohnMcClane",
+        "sort": "MOVIE#",
+        "limit": "100",
+        "index": "gsi1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "role",
+            "value": "protagonist",
+            "type": "string"
+          }
+        ]
+      },
+      "Details about Die Hard": {
+        "hash": "MOVIE#DieHard",
+        "sort": "MOVIE#DieHard",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "All Action Movies": {
+        "hash": "Action",
+        "sort": "",
+        "limit": "100",
+        "index": "gsi2",
         "schema": "Current",
         "type": "Query",
         "operation": "Begins with",
