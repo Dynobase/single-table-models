@@ -1,0 +1,660 @@
+{
+  "ModelName": "HotelReservations",
+  "ModelMetadata": {
+    "Author": "Rick Houlihan",
+    "DateCreated": "2022-03-07T08:54:36.958Z",
+    "DateLastModified": "2022-03-07T08:30:37.981Z",
+    "Description": "Reservations for hotels",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "data",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "type",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "__id",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "startDate",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "endDate",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "rType",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "reservationId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "assignment",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "state",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1SK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "details",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "amount",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "rateId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "date",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "summary",
+          "AttributeType": "M"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GSI1SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "type": {
+            "S": "customer"
+          },
+          "PK": {
+            "S": "C1"
+          },
+          "SK": {
+            "S": "A"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "booking"
+          },
+          "PK": {
+            "S": "C1"
+          },
+          "SK": {
+            "S": ""
+          },
+          "startDate": {
+            "S": "2021-09-15T02:00\"00"
+          },
+          "endDate": {
+            "S": "2021-09-16T12:00\"00"
+          },
+          "rType": {
+            "S": "standard"
+          },
+          "reservationId": {
+            "S": "RES1"
+          },
+          "assignment": {
+            "S": "ROOM1"
+          },
+          "state": {
+            "S": "COMPLETE"
+          },
+          "GSI1PK": {
+            "S": "H1"
+          },
+          "GSI1SK": {
+            "S": "2021-09-15T02:00\"00"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "hotel"
+          },
+          "PK": {
+            "S": "H1"
+          },
+          "SK": {
+            "S": "A"
+          },
+          "details": {
+            "M": {
+              "thisIsInDetails": "something"
+            }
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "rate"
+          },
+          "PK": {
+            "S": "H1"
+          },
+          "SK": {
+            "S": "2021-09-01T00:00:00#rate"
+          },
+          "startDate": {
+            "S": "2021-09-01T00:00:00"
+          },
+          "endDate": {
+            "S": "2021-09-30T00:00:00"
+          },
+          "amount": {
+            "N": "100"
+          },
+          "rType": {
+            "S": "standard"
+          },
+          "rateId": {
+            "S": "RATE1"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "summary"
+          },
+          "PK": {
+            "S": "H1"
+          },
+          "SK": {
+            "S": "2021-09-15"
+          },
+          "date": {
+            "S": "2021-09-15"
+          },
+          "summary": {
+            "M": {}
+          },
+          "__id": {}
+        }
+      ],
+      "ModelSchema": {
+        "indexes": {
+          "primary": {
+            "hash": "PK",
+            "sort": "SK"
+          },
+          "GSI1": {
+            "hash": "GSI1PK",
+            "sort": "GSI1SK",
+            "projection": "ALL"
+          }
+        },
+        "models": {
+          "customer": {
+            "type": {
+              "type": "string",
+              "value": "customer"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "booking": {
+            "type": {
+              "type": "string",
+              "value": "booking"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${GSI1SK}#${type}"
+            },
+            "startDate": {
+              "type": "string"
+            },
+            "endDate": {
+              "type": "string"
+            },
+            "rType": {
+              "type": "string"
+            },
+            "reservationId": {
+              "type": "string"
+            },
+            "assignment": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "GSI1PK": {
+              "type": "string"
+            },
+            "GSI1SK": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "hotel": {
+            "type": {
+              "type": "string",
+              "value": "hotel"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "details": {
+              "type": "map"
+            },
+            "__id": {}
+          },
+          "rate": {
+            "type": {
+              "type": "string",
+              "value": "rate"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${startDate}#${type}"
+            },
+            "startDate": {
+              "type": "string"
+            },
+            "endDate": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "rType": {
+              "type": "string"
+            },
+            "rateId": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "summary": {
+            "type": {
+              "type": "string",
+              "value": "summary"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "map"
+            },
+            "__id": {}
+          }
+        },
+        "version": "0.1.0",
+        "params": {
+          "typeField": "type"
+        },
+        "format": "onetable:1.0.0",
+        "queries": {
+          "Get Customer": {
+            "hash": "C1",
+            "sort": "",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "customer",
+                "type": "string"
+              }
+            ]
+          },
+          "Get Customer's bookings": {
+            "hash": "C1",
+            "sort": "",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "booking",
+                "type": "string"
+              }
+            ]
+          },
+          "Get Hotel's bookings in 2021": {
+            "hash": "H1",
+            "sort": "2021",
+            "limit": "100",
+            "index": "GSI1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "Get Hotel": {
+            "hash": "H1",
+            "sort": "A",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "Get Hotel's rates": {
+            "hash": "H1",
+            "sort": "",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "rate",
+                "type": "string"
+              }
+            ]
+          },
+          "Get Hotel's details in Sept 2021": {
+            "hash": "H1",
+            "sort": "2021-09",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          }
+        }
+      }
+    }
+  ],
+  "ModelSchema": {
+    "indexes": {
+      "primary": {
+        "hash": "PK",
+        "sort": "SK"
+      },
+      "GSI1": {
+        "hash": "GSI1PK",
+        "sort": "GSI1SK",
+        "projection": "ALL"
+      }
+    },
+    "models": {
+      "customer": {
+        "type": {
+          "type": "string",
+          "value": "customer"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "booking": {
+        "type": {
+          "type": "string",
+          "value": "booking"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${GSI1SK}#${type}"
+        },
+        "startDate": {
+          "type": "string"
+        },
+        "endDate": {
+          "type": "string"
+        },
+        "rType": {
+          "type": "string"
+        },
+        "reservationId": {
+          "type": "string"
+        },
+        "assignment": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "GSI1PK": {
+          "type": "string"
+        },
+        "GSI1SK": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "hotel": {
+        "type": {
+          "type": "string",
+          "value": "hotel"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "details": {
+          "type": "map"
+        },
+        "__id": {}
+      },
+      "rate": {
+        "type": {
+          "type": "string",
+          "value": "rate"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${startDate}#${type}"
+        },
+        "startDate": {
+          "type": "string"
+        },
+        "endDate": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "rType": {
+          "type": "string"
+        },
+        "rateId": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "summary": {
+        "type": {
+          "type": "string",
+          "value": "summary"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "map"
+        },
+        "__id": {}
+      }
+    },
+    "version": "0.1.0",
+    "params": {
+      "typeField": "type"
+    },
+    "format": "onetable:1.0.0",
+    "queries": {
+      "Get Customer": {
+        "hash": "C1",
+        "sort": "",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "customer",
+            "type": "string"
+          }
+        ]
+      },
+      "Get Customer's bookings": {
+        "hash": "C1",
+        "sort": "",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "booking",
+            "type": "string"
+          }
+        ]
+      },
+      "Get Hotel's bookings in 2021": {
+        "hash": "H1",
+        "sort": "2021",
+        "limit": "100",
+        "index": "GSI1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Get Hotel": {
+        "hash": "H1",
+        "sort": "A",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "Get Hotel's rates": {
+        "hash": "H1",
+        "sort": "",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "rate",
+            "type": "string"
+          }
+        ]
+      },
+      "Get Hotel's details in Sept 2021": {
+        "hash": "H1",
+        "sort": "2021-09",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      }
+    }
+  }
+}

@@ -1,0 +1,1703 @@
+{
+  "ModelName": "Reservations",
+  "ModelMetadata": {
+    "Author": "Rick Houlihan",
+    "DateCreated": "2022-03-07T08:54:36.958Z",
+    "DateLastModified": "2022-03-07T08:54:36.958Z",
+    "Description": "Bi-directional model for fares",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "data",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "type",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "start",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "end",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "origin",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "dest",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1SK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "class",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "__id",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "depart",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "arrive",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "isSegment",
+          "AttributeType": "BOOL"
+        },
+        {
+          "AttributeName": "segId",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "number",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "GSI2PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI2SK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "segments",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SSR",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "flight",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "seat",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GSI1SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI2",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI2PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GSI2SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "DEN"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "DEN"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "DEN"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "DEN"
+          },
+          "dest": {
+            "S": "SFO"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "DEN"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-02T16:55:00"
+          },
+          "arrive": {
+            "S": "2021-08-02T18:25:00"
+          },
+          "origin": {
+            "S": "DEN"
+          },
+          "dest": {
+            "S": "SFO"
+          },
+          "GSI1PK": {
+            "S": "SFO"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "isSegment": {
+            "BOOL": true
+          },
+          "segId": {
+            "N": "2"
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "number": {
+            "N": "160"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "DEN"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T10:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T14:25:00"
+          },
+          "origin": {
+            "S": "DEN"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI1PK": {
+            "S": "JFK"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "isSegment": {
+            "BOOL": true
+          },
+          "segId": {
+            "N": "2"
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "number": {
+            "N": "150"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "JFK"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "SFO"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "JFK"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "SFO"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "direct"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "JFK"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T14:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T17:25:00"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "SFO"
+          },
+          "GSI1PK": {
+            "S": "SFO"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "segId": {
+            "N": "0"
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "number": {
+            "N": "260"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "JFK"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T15:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-03T20:25:25:00"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "SFO"
+          },
+          "GSI1PK": {
+            "S": "SFO"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "segments": {
+            "S": "{DEN, SFO}"
+          },
+          "segId": {
+            "N": "0"
+          },
+          "class": {
+            "S": "direct"
+          },
+          "number": {
+            "N": "160"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "JFK"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T15:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T19:25:00"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "DEN"
+          },
+          "GSI1PK": {
+            "S": "DEN"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "isSegment": {
+            "BOOL": true
+          },
+          "segId": {
+            "N": "1"
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "number": {
+            "N": "160"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "JFK"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "DEN"
+          },
+          "GSI1PK": {
+            "S": "DEN"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "depart": {
+            "S": "2021-09-22T14:56:20.579Z"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "assignment"
+          },
+          "PK": {
+            "S": "Parker, Jane"
+          },
+          "SK": {
+            "S": ""
+          },
+          "SSR": {
+            "S": "[]"
+          },
+          "flight": {
+            "N": "150"
+          },
+          "segId": {
+            "N": "2"
+          },
+          "seat": {
+            "S": "3D"
+          },
+          "depart": {
+            "S": "2021-08-01T10:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T14:25:00"
+          },
+          "origin": {
+            "S": "DEN"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI2PK": {
+            "S": "${number}"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {},
+          "number": {
+            "S": "3"
+          }
+        },
+        {
+          "type": {
+            "S": "assignment"
+          },
+          "PK": {
+            "S": "Parker, Jane"
+          },
+          "SK": {
+            "S": ""
+          },
+          "SSR": {
+            "S": "[]"
+          },
+          "flight": {
+            "N": "160"
+          },
+          "segId": {
+            "N": "1"
+          },
+          "seat": {
+            "S": "3D"
+          },
+          "depart": {
+            "S": "2021-08-01T15:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T19:25:00"
+          },
+          "origin": {
+            "S": "JFK"
+          },
+          "dest": {
+            "S": "DEN"
+          },
+          "GSI2PK": {
+            "S": "${number}"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {},
+          "number": {
+            "S": "2"
+          }
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "SFO"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "SFO"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "direct"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "fare"
+          },
+          "PK": {
+            "S": "SFO"
+          },
+          "SK": {
+            "S": ""
+          },
+          "start": {
+            "S": "2021-08-01T00:00:00"
+          },
+          "end": {
+            "S": "2021-08-01T23:59:59"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "DEN"
+          },
+          "GSI1PK": {
+            "S": ""
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "SFO"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T07:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T13:25:00"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI1PK": {
+            "S": "JFK"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "segId": {
+            "N": "0"
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "number": {
+            "N": "250"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": "0"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "SFO"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T06:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T14:25:00"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI1PK": {
+            "S": "JFK"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "segments": {
+            "S": "{DEN, JFK}"
+          },
+          "segId": {
+            "N": "0"
+          },
+          "class": {
+            "S": "direct"
+          },
+          "number": {
+            "N": "150"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": "0"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "flight"
+          },
+          "PK": {
+            "S": "SFO"
+          },
+          "SK": {
+            "S": ""
+          },
+          "depart": {
+            "S": "2021-08-01T06:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T09:25:00"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "DEN"
+          },
+          "GSI1PK": {
+            "S": "DEN"
+          },
+          "GSI1SK": {
+            "S": ""
+          },
+          "isSegment": {
+            "BOOL": true
+          },
+          "segId": {
+            "N": "1"
+          },
+          "class": {
+            "S": "nonstop"
+          },
+          "number": {
+            "N": "150"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": "1"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "assignment"
+          },
+          "PK": {
+            "S": "Smith, Jon"
+          },
+          "SK": {
+            "S": ""
+          },
+          "SSR": {
+            "S": "[wheelchair, vegan]"
+          },
+          "flight": {
+            "N": "150"
+          },
+          "segId": {
+            "N": "2"
+          },
+          "seat": {
+            "S": "1A"
+          },
+          "depart": {
+            "S": "2021-08-01T10:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T14:25:00"
+          },
+          "origin": {
+            "S": "DEN"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {},
+          "number": {
+            "S": "1"
+          }
+        },
+        {
+          "type": {
+            "S": "assignment"
+          },
+          "PK": {
+            "S": "Smith, Jon"
+          },
+          "SK": {
+            "S": ""
+          },
+          "SSR": {
+            "S": "[wheelchair, vegan]"
+          },
+          "flight": {
+            "N": "150"
+          },
+          "segId": {
+            "N": "1"
+          },
+          "seat": {
+            "S": "1A"
+          },
+          "depart": {
+            "S": "2021-08-01T06:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T09:25:00"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "DEN"
+          },
+          "GSI2PK": {
+            "S": "160"
+          },
+          "GSI2SK": {
+            "S": ""
+          },
+          "__id": {},
+          "number": {
+            "S": "4"
+          }
+        },
+        {
+          "type": {
+            "S": "booking"
+          },
+          "PK": {
+            "S": "Smith, Jon"
+          },
+          "SK": {
+            "S": ""
+          },
+          "flight": {
+            "N": "150"
+          },
+          "depart": {
+            "S": "2021-08-01T06:25:00"
+          },
+          "arrive": {
+            "S": "2021-08-01T14:25:00"
+          },
+          "segments": {
+            "N": "2"
+          },
+          "origin": {
+            "S": "SFO"
+          },
+          "dest": {
+            "S": "JFK"
+          },
+          "__id": {}
+        }
+      ],
+      "ModelSchema": {
+        "indexes": {
+          "primary": {
+            "hash": "PK",
+            "sort": "SK"
+          },
+          "GSI1": {
+            "hash": "GSI1PK",
+            "sort": "GSI1SK",
+            "projection": "ALL"
+          },
+          "GSI2": {
+            "hash": "GSI2PK",
+            "sort": "GSI2SK",
+            "projection": "ALL"
+          }
+        },
+        "models": {
+          "fare": {
+            "type": {
+              "type": "string",
+              "value": "fare"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${dest}#${start}#${class}"
+            },
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "origin": {
+              "type": "string"
+            },
+            "dest": {
+              "type": "string"
+            },
+            "GSI1PK": {
+              "type": "string"
+            },
+            "GSI1SK": {
+              "type": "string",
+              "value": "${origin}#${start}"
+            },
+            "class": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "flight": {
+            "type": {
+              "type": "string",
+              "value": "flight"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${origin}#${depart}#${number}#${segId}"
+            },
+            "depart": {
+              "type": "string"
+            },
+            "arrive": {
+              "type": "string"
+            },
+            "origin": {
+              "type": "string"
+            },
+            "dest": {
+              "type": "string"
+            },
+            "GSI1PK": {
+              "type": "string"
+            },
+            "GSI1SK": {
+              "type": "string",
+              "value": "${origin}#${arrive}"
+            },
+            "isSegment": {
+              "type": "boolean"
+            },
+            "segId": {
+              "type": "number"
+            },
+            "class": {
+              "type": "string"
+            },
+            "number": {
+              "type": "number"
+            },
+            "GSI2PK": {
+              "type": "string",
+              "value": "${number}"
+            },
+            "GSI2SK": {
+              "type": "string",
+              "value": "${segId}"
+            },
+            "__id": {}
+          },
+          "assignment": {
+            "type": {
+              "type": "string",
+              "value": "assignment"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${depart}#${flight}#${segId}#${seat}"
+            },
+            "SSR": {
+              "type": "string"
+            },
+            "flight": {
+              "type": "number"
+            },
+            "segId": {
+              "type": "number"
+            },
+            "seat": {
+              "type": "string"
+            },
+            "depart": {
+              "type": "string"
+            },
+            "arrive": {
+              "type": "string"
+            },
+            "origin": {
+              "type": "string"
+            },
+            "dest": {
+              "type": "string"
+            },
+            "GSI2PK": {
+              "type": "string",
+              "value": "${number}"
+            },
+            "GSI2SK": {
+              "type": "string",
+              "value": "${segId}#${seat}"
+            },
+            "__id": {},
+            "number": {
+              "type": "string"
+            }
+          },
+          "booking": {
+            "type": {
+              "type": "string",
+              "value": "booking"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${depart}#${flight}"
+            },
+            "flight": {
+              "type": "number"
+            },
+            "depart": {
+              "type": "string"
+            },
+            "arrive": {
+              "type": "string"
+            },
+            "segments": {
+              "type": "number"
+            },
+            "origin": {
+              "type": "string"
+            },
+            "dest": {
+              "type": "string"
+            },
+            "__id": {}
+          }
+        },
+        "version": "0.1.0",
+        "params": {
+          "typeField": "type"
+        },
+        "format": "onetable:1.0.0",
+        "queries": {
+          "All scheduled flights from DEN in 2021": {
+            "hash": "DEN",
+            "sort": "DEN#2021",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "Fares from DEN to JFK": {
+            "hash": "DEN",
+            "sort": "JFK",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "Passenger's assignments": {
+            "hash": "Parker, Jane",
+            "sort": "",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "assignment",
+                "type": "string"
+              }
+            ]
+          },
+          "Passenger's bookings in 2021": {
+            "hash": "Smith, Jon",
+            "sort": "2021",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "booking",
+                "type": "string"
+              }
+            ]
+          },
+          "Fares from JFK to SFO": {
+            "hash": "JFK",
+            "sort": "SFO",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "All details about flight by number": {
+            "hash": "160",
+            "sort": "",
+            "limit": "100",
+            "index": "GSI2",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "Flights to SFO from JFK in 2021": {
+            "hash": "SFO",
+            "sort": "JFK#2021",
+            "limit": "100",
+            "index": "GSI1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "flight",
+                "type": "string"
+              }
+            ]
+          },
+          "All flights to SFO": {
+            "hash": "SFO",
+            "sort": "",
+            "limit": "100",
+            "index": "GSI1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "flight",
+                "type": "string"
+              }
+            ]
+          },
+          "All direct flights to SFO": {
+            "hash": "SFO",
+            "sort": "",
+            "limit": "100",
+            "index": "GSI1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "flight",
+                "type": "string"
+              },
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "class",
+                "value": "direct",
+                "type": "string"
+              }
+            ]
+          },
+          "All non-stop flights from DEN": {
+            "hash": "DEN",
+            "sort": "",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "class",
+                "value": "nonstop",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "ModelSchema": {
+    "indexes": {
+      "primary": {
+        "hash": "PK",
+        "sort": "SK"
+      },
+      "GSI1": {
+        "hash": "GSI1PK",
+        "sort": "GSI1SK",
+        "projection": "ALL"
+      },
+      "GSI2": {
+        "hash": "GSI2PK",
+        "sort": "GSI2SK",
+        "projection": "ALL"
+      }
+    },
+    "models": {
+      "fare": {
+        "type": {
+          "type": "string",
+          "value": "fare"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${dest}#${start}#${class}"
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "dest": {
+          "type": "string"
+        },
+        "GSI1PK": {
+          "type": "string"
+        },
+        "GSI1SK": {
+          "type": "string",
+          "value": "${origin}#${start}"
+        },
+        "class": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "flight": {
+        "type": {
+          "type": "string",
+          "value": "flight"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${origin}#${depart}#${number}#${segId}"
+        },
+        "depart": {
+          "type": "string"
+        },
+        "arrive": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "dest": {
+          "type": "string"
+        },
+        "GSI1PK": {
+          "type": "string"
+        },
+        "GSI1SK": {
+          "type": "string",
+          "value": "${origin}#${arrive}"
+        },
+        "isSegment": {
+          "type": "boolean"
+        },
+        "segId": {
+          "type": "number"
+        },
+        "class": {
+          "type": "string"
+        },
+        "number": {
+          "type": "number"
+        },
+        "GSI2PK": {
+          "type": "string",
+          "value": "${number}"
+        },
+        "GSI2SK": {
+          "type": "string",
+          "value": "${segId}"
+        },
+        "__id": {}
+      },
+      "assignment": {
+        "type": {
+          "type": "string",
+          "value": "assignment"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${depart}#${flight}#${segId}#${seat}"
+        },
+        "SSR": {
+          "type": "string"
+        },
+        "flight": {
+          "type": "number"
+        },
+        "segId": {
+          "type": "number"
+        },
+        "seat": {
+          "type": "string"
+        },
+        "depart": {
+          "type": "string"
+        },
+        "arrive": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "dest": {
+          "type": "string"
+        },
+        "GSI2PK": {
+          "type": "string",
+          "value": "${number}"
+        },
+        "GSI2SK": {
+          "type": "string",
+          "value": "${segId}#${seat}"
+        },
+        "__id": {},
+        "number": {
+          "type": "string"
+        }
+      },
+      "booking": {
+        "type": {
+          "type": "string",
+          "value": "booking"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${depart}#${flight}"
+        },
+        "flight": {
+          "type": "number"
+        },
+        "depart": {
+          "type": "string"
+        },
+        "arrive": {
+          "type": "string"
+        },
+        "segments": {
+          "type": "number"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "dest": {
+          "type": "string"
+        },
+        "__id": {}
+      }
+    },
+    "version": "0.1.0",
+    "params": {
+      "typeField": "type"
+    },
+    "format": "onetable:1.0.0",
+    "queries": {
+      "All scheduled flights from DEN in 2021": {
+        "hash": "DEN",
+        "sort": "DEN#2021",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Fares from DEN to JFK": {
+        "hash": "DEN",
+        "sort": "JFK",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Passenger's assignments": {
+        "hash": "Parker, Jane",
+        "sort": "",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "assignment",
+            "type": "string"
+          }
+        ]
+      },
+      "Passenger's bookings in 2021": {
+        "hash": "Smith, Jon",
+        "sort": "2021",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "booking",
+            "type": "string"
+          }
+        ]
+      },
+      "Fares from JFK to SFO": {
+        "hash": "JFK",
+        "sort": "SFO",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "All details about flight by number": {
+        "hash": "160",
+        "sort": "",
+        "limit": "100",
+        "index": "GSI2",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "Flights to SFO from JFK in 2021": {
+        "hash": "SFO",
+        "sort": "JFK#2021",
+        "limit": "100",
+        "index": "GSI1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "flight",
+            "type": "string"
+          }
+        ]
+      },
+      "All flights to SFO": {
+        "hash": "SFO",
+        "sort": "",
+        "limit": "100",
+        "index": "GSI1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "flight",
+            "type": "string"
+          }
+        ]
+      },
+      "All direct flights to SFO": {
+        "hash": "SFO",
+        "sort": "",
+        "limit": "100",
+        "index": "GSI1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "flight",
+            "type": "string"
+          },
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "class",
+            "value": "direct",
+            "type": "string"
+          }
+        ]
+      },
+      "All non-stop flights from DEN": {
+        "hash": "DEN",
+        "sort": "",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "class",
+            "value": "nonstop",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "ModelName": "Movies",
   "ModelMetadata": {
-    "Author": "Dynobase",
-    "DateCreated": "to-be-changed",
+    "Author": "Rafal Wilinski",
+    "DateCreated": "2022-01-08T11:21:37.563Z",
     "DateLastModified": "2022-01-08T11:21:37.563Z",
-    "Description": "",
+    "Description": "Movies and their actors and directors",
     "AWSService": "Amazon DynamoDB",
     "Version": "2.0"
   },

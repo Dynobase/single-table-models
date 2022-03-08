@@ -1,0 +1,1179 @@
+{
+  "ModelName": "Hospital",
+  "ModelMetadata": {
+    "Author": "Rick Houlihan",
+    "DateCreated": "2022-03-07T08:54:36.958Z",
+    "DateLastModified": "2022-03-07T08:46:40.801Z",
+    "Description": "Patients, Admissions, Rooms",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "data",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "type",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "PK1",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK1",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "PK2",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK2",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "__id",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "timestamp",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "treatmentId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "medicineId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "roomId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "PK3",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK3",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "PK4",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK4",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "condition",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "activityId",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK1",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK1",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI2",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK2",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK2",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI3",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK3",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK3",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI4",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK4",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK4",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "type": {
+            "S": "doctor"
+          },
+          "PK": {
+            "S": "D1"
+          },
+          "SK": {
+            "S": "A"
+          },
+          "PK1": {
+            "S": "D1"
+          },
+          "SK1": {
+            "S": "A"
+          },
+          "PK2": {
+            "S": "specialty"
+          },
+          "SK2": {
+            "S": "hospitalId"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "nurse"
+          },
+          "PK": {
+            "S": "N1"
+          },
+          "SK": {
+            "S": "A"
+          },
+          "PK1": {
+            "S": "N1"
+          },
+          "SK1": {
+            "S": "A"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "patient"
+          },
+          "PK": {
+            "S": "P1"
+          },
+          "SK": {
+            "S": "A"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "treatment"
+          },
+          "PK": {
+            "S": "P1"
+          },
+          "SK": {
+            "S": ""
+          },
+          "timestamp": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "treatmentId": {
+            "S": "T11"
+          },
+          "PK1": {
+            "S": "D1"
+          },
+          "SK1": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "PK2": {
+            "S": "hospitalId-T"
+          },
+          "SK2": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "medicine"
+          },
+          "PK": {
+            "S": "P1"
+          },
+          "SK": {
+            "S": "2020-11-25T12:00:00#M1"
+          },
+          "PK1": {
+            "S": "D1"
+          },
+          "SK1": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "PK2": {
+            "S": "hospitalId-M"
+          },
+          "SK2": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "medicineId": {
+            "S": "M1"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "admission"
+          },
+          "PK": {
+            "S": "P1"
+          },
+          "SK": {
+            "S": ""
+          },
+          "timestamp": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "roomId": {
+            "S": "R1"
+          },
+          "PK1": {
+            "S": "N1"
+          },
+          "SK1": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "PK2": {
+            "S": "normal"
+          },
+          "SK2": {
+            "S": "2020-11-26T00:00:00"
+          },
+          "PK3": {
+            "S": "R1"
+          },
+          "SK3": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "PK4": {
+            "S": "hospitalId"
+          },
+          "SK4": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "condition": {
+            "S": "minor trauma"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "activity"
+          },
+          "PK": {
+            "S": "P1"
+          },
+          "SK": {
+            "S": ""
+          },
+          "PK1": {
+            "S": "N1"
+          },
+          "SK1": {
+            "S": "2020-11-25T12:00:00"
+          },
+          "activityId": {
+            "S": "A1"
+          },
+          "__id": {}
+        },
+        {
+          "type": {
+            "S": "room"
+          },
+          "PK": {
+            "S": "R1"
+          },
+          "SK": {
+            "S": "A"
+          },
+          "PK3": {
+            "S": "R1"
+          },
+          "SK3": {
+            "S": "A"
+          },
+          "__id": {}
+        }
+      ],
+      "ModelSchema": {
+        "indexes": {
+          "primary": {
+            "hash": "PK",
+            "sort": "SK"
+          },
+          "GSI1": {
+            "hash": "PK1",
+            "sort": "SK1",
+            "projection": "ALL"
+          },
+          "GSI2": {
+            "hash": "PK2",
+            "sort": "SK2",
+            "projection": "ALL"
+          },
+          "GSI3": {
+            "hash": "PK3",
+            "sort": "SK3",
+            "projection": "ALL"
+          },
+          "GSI4": {
+            "hash": "PK4",
+            "sort": "SK4",
+            "projection": "ALL"
+          }
+        },
+        "models": {
+          "doctor": {
+            "type": {
+              "type": "string",
+              "value": "doctor"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "PK1": {
+              "type": "string"
+            },
+            "SK1": {
+              "type": "string"
+            },
+            "PK2": {
+              "type": "string"
+            },
+            "SK2": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "nurse": {
+            "type": {
+              "type": "string",
+              "value": "nurse"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "PK1": {
+              "type": "string"
+            },
+            "SK1": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "patient": {
+            "type": {
+              "type": "string",
+              "value": "patient"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "treatment": {
+            "type": {
+              "type": "string",
+              "value": "treatment"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${SK1}#${treatmentId}"
+            },
+            "timestamp": {
+              "type": "string"
+            },
+            "treatmentId": {
+              "type": "string"
+            },
+            "PK1": {
+              "type": "string"
+            },
+            "SK1": {
+              "type": "string"
+            },
+            "PK2": {
+              "type": "string"
+            },
+            "SK2": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "medicine": {
+            "type": {
+              "type": "string",
+              "value": "medicine"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${SK1}#${medicineId}"
+            },
+            "PK1": {
+              "type": "string"
+            },
+            "SK1": {
+              "type": "string"
+            },
+            "PK2": {
+              "type": "string"
+            },
+            "SK2": {
+              "type": "string"
+            },
+            "medicineId": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "admission": {
+            "type": {
+              "type": "string",
+              "value": "admission"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${SK1}#${PK3}"
+            },
+            "timestamp": {
+              "type": "string"
+            },
+            "roomId": {
+              "type": "string"
+            },
+            "PK1": {
+              "type": "string"
+            },
+            "SK1": {
+              "type": "string"
+            },
+            "PK2": {
+              "type": "string"
+            },
+            "SK2": {
+              "type": "string"
+            },
+            "PK3": {
+              "type": "string"
+            },
+            "SK3": {
+              "type": "string"
+            },
+            "PK4": {
+              "type": "string"
+            },
+            "SK4": {
+              "type": "string"
+            },
+            "condition": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "activity": {
+            "type": {
+              "type": "string",
+              "value": "activity"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string",
+              "value": "${SK1}#${activityId}"
+            },
+            "PK1": {
+              "type": "string"
+            },
+            "SK1": {
+              "type": "string"
+            },
+            "activityId": {
+              "type": "string"
+            },
+            "__id": {}
+          },
+          "room": {
+            "type": {
+              "type": "string",
+              "value": "room"
+            },
+            "PK": {
+              "type": "string"
+            },
+            "SK": {
+              "type": "string"
+            },
+            "PK3": {
+              "type": "string"
+            },
+            "SK3": {
+              "type": "string"
+            },
+            "__id": {}
+          }
+        },
+        "version": "0.1.0",
+        "params": {
+          "typeField": "type"
+        },
+        "format": "onetable:1.0.0",
+        "queries": {
+          "Get Doctor": {
+            "hash": "D1",
+            "sort": "A",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "Get Room's details": {
+            "hash": "R1",
+            "sort": "A",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "Get Nurse": {
+            "hash": "N1",
+            "sort": "A",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "Get Patient": {
+            "hash": "P1",
+            "sort": "A",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          },
+          "Get Patient's events after Nov 2020": {
+            "hash": "P1",
+            "sort": "2020-11",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": []
+          },
+          "Get Patients Medicine in 2020 and after": {
+            "hash": "P1",
+            "sort": "2020",
+            "limit": "100",
+            "index": "primary",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "medicine",
+                "type": "string"
+              }
+            ]
+          },
+          "Get Treatments by Doctor in 2020": {
+            "hash": "D1",
+            "sort": "2020",
+            "limit": "100",
+            "index": "GSI1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "treatment",
+                "type": "string"
+              }
+            ]
+          },
+          "Get meds prescribed by Doctor in 2020": {
+            "hash": "D1",
+            "sort": "2020",
+            "limit": "100",
+            "index": "GSI1",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "medicine",
+                "type": "string"
+              }
+            ]
+          },
+          "Get Doctors with a speciality in X": {
+            "hash": "specialty",
+            "sort": "",
+            "limit": "100",
+            "index": "GSI2",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "doctor",
+                "type": "string"
+              }
+            ]
+          },
+          "Get admissions in room R1 in 2020": {
+            "hash": "R1",
+            "sort": "2020",
+            "limit": "100",
+            "index": "GSI3",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "admission",
+                "type": "string"
+              }
+            ]
+          },
+          "Get admissions in 2020 in hospital X": {
+            "hash": "hospitalId",
+            "sort": "2020",
+            "limit": "100",
+            "index": "GSI4",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Begins with",
+            "filters": [
+              {
+                "operation": "Equal",
+                "combine": "And",
+                "field": "type",
+                "value": "admission",
+                "type": "string"
+              }
+            ]
+          },
+          "Get all normal admissions": {
+            "hash": "normal",
+            "sort": "",
+            "limit": "100",
+            "index": "GSI2",
+            "schema": "Current",
+            "type": "Query",
+            "operation": "Equal",
+            "filters": []
+          }
+        }
+      }
+    }
+  ],
+  "ModelSchema": {
+    "indexes": {
+      "primary": {
+        "hash": "PK",
+        "sort": "SK"
+      },
+      "GSI1": {
+        "hash": "PK1",
+        "sort": "SK1",
+        "projection": "ALL"
+      },
+      "GSI2": {
+        "hash": "PK2",
+        "sort": "SK2",
+        "projection": "ALL"
+      },
+      "GSI3": {
+        "hash": "PK3",
+        "sort": "SK3",
+        "projection": "ALL"
+      },
+      "GSI4": {
+        "hash": "PK4",
+        "sort": "SK4",
+        "projection": "ALL"
+      }
+    },
+    "models": {
+      "doctor": {
+        "type": {
+          "type": "string",
+          "value": "doctor"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "PK1": {
+          "type": "string"
+        },
+        "SK1": {
+          "type": "string"
+        },
+        "PK2": {
+          "type": "string"
+        },
+        "SK2": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "nurse": {
+        "type": {
+          "type": "string",
+          "value": "nurse"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "PK1": {
+          "type": "string"
+        },
+        "SK1": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "patient": {
+        "type": {
+          "type": "string",
+          "value": "patient"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "treatment": {
+        "type": {
+          "type": "string",
+          "value": "treatment"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${SK1}#${treatmentId}"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "treatmentId": {
+          "type": "string"
+        },
+        "PK1": {
+          "type": "string"
+        },
+        "SK1": {
+          "type": "string"
+        },
+        "PK2": {
+          "type": "string"
+        },
+        "SK2": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "medicine": {
+        "type": {
+          "type": "string",
+          "value": "medicine"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${SK1}#${medicineId}"
+        },
+        "PK1": {
+          "type": "string"
+        },
+        "SK1": {
+          "type": "string"
+        },
+        "PK2": {
+          "type": "string"
+        },
+        "SK2": {
+          "type": "string"
+        },
+        "medicineId": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "admission": {
+        "type": {
+          "type": "string",
+          "value": "admission"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${SK1}#${PK3}"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "roomId": {
+          "type": "string"
+        },
+        "PK1": {
+          "type": "string"
+        },
+        "SK1": {
+          "type": "string"
+        },
+        "PK2": {
+          "type": "string"
+        },
+        "SK2": {
+          "type": "string"
+        },
+        "PK3": {
+          "type": "string"
+        },
+        "SK3": {
+          "type": "string"
+        },
+        "PK4": {
+          "type": "string"
+        },
+        "SK4": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "activity": {
+        "type": {
+          "type": "string",
+          "value": "activity"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string",
+          "value": "${SK1}#${activityId}"
+        },
+        "PK1": {
+          "type": "string"
+        },
+        "SK1": {
+          "type": "string"
+        },
+        "activityId": {
+          "type": "string"
+        },
+        "__id": {}
+      },
+      "room": {
+        "type": {
+          "type": "string",
+          "value": "room"
+        },
+        "PK": {
+          "type": "string"
+        },
+        "SK": {
+          "type": "string"
+        },
+        "PK3": {
+          "type": "string"
+        },
+        "SK3": {
+          "type": "string"
+        },
+        "__id": {}
+      }
+    },
+    "version": "0.1.0",
+    "params": {
+      "typeField": "type"
+    },
+    "format": "onetable:1.0.0",
+    "queries": {
+      "Get Doctor": {
+        "hash": "D1",
+        "sort": "A",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "Get Room's details": {
+        "hash": "R1",
+        "sort": "A",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "Get Nurse": {
+        "hash": "N1",
+        "sort": "A",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "Get Patient": {
+        "hash": "P1",
+        "sort": "A",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      },
+      "Get Patient's events after Nov 2020": {
+        "hash": "P1",
+        "sort": "2020-11",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": []
+      },
+      "Get Patients Medicine in 2020 and after": {
+        "hash": "P1",
+        "sort": "2020",
+        "limit": "100",
+        "index": "primary",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "medicine",
+            "type": "string"
+          }
+        ]
+      },
+      "Get Treatments by Doctor in 2020": {
+        "hash": "D1",
+        "sort": "2020",
+        "limit": "100",
+        "index": "GSI1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "treatment",
+            "type": "string"
+          }
+        ]
+      },
+      "Get meds prescribed by Doctor in 2020": {
+        "hash": "D1",
+        "sort": "2020",
+        "limit": "100",
+        "index": "GSI1",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "medicine",
+            "type": "string"
+          }
+        ]
+      },
+      "Get Doctors with a speciality in X": {
+        "hash": "specialty",
+        "sort": "",
+        "limit": "100",
+        "index": "GSI2",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "doctor",
+            "type": "string"
+          }
+        ]
+      },
+      "Get admissions in room R1 in 2020": {
+        "hash": "R1",
+        "sort": "2020",
+        "limit": "100",
+        "index": "GSI3",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "admission",
+            "type": "string"
+          }
+        ]
+      },
+      "Get admissions in 2020 in hospital X": {
+        "hash": "hospitalId",
+        "sort": "2020",
+        "limit": "100",
+        "index": "GSI4",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Begins with",
+        "filters": [
+          {
+            "operation": "Equal",
+            "combine": "And",
+            "field": "type",
+            "value": "admission",
+            "type": "string"
+          }
+        ]
+      },
+      "Get all normal admissions": {
+        "hash": "normal",
+        "sort": "",
+        "limit": "100",
+        "index": "GSI2",
+        "schema": "Current",
+        "type": "Query",
+        "operation": "Equal",
+        "filters": []
+      }
+    }
+  }
+}
